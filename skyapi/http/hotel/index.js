@@ -1,5 +1,6 @@
 import { response, Router } from "express";
 import axios from "axios";
+import fs from "fs"
 
 import HttpUsers from "./users";
 import HttpStats from "./stats";
@@ -17,6 +18,9 @@ export default class HttpHotel {
     }
 
     get_badge_data(req, res, next) {
+        if(fs.existsSync(__base + "/dist/assets/custombadges/" + req.params.badgedata)) {
+            return res.set("content-type", "image/gif").sendFile(__base + "/dist/assets/custombadges/" + req.params.badgedata);
+        }
         axios.get("https://assets.habboon.pw/habbo-imaging/badge/" + req.params.badgedata, { responseType: 'arraybuffer' })
         .then(response => {
             res.set("content-type", "image/gif").send(response.data);
