@@ -1,0 +1,27 @@
+.bgl {
+    background-image: linear-gradient(to right, #49d2e0 , #1e8ec3); }
+  
+  .button {
+      font-weight: bold;
+      color: #ffffff !important;
+      padding: 10px;
+      box-shadow: 0 3px 0 1px rgba(0,0,0,.2);
+      border: 0.15rem solid;
+      border-radius: 0.4rem;
+      cursor: pointer; 
+      }
+  
+  .button.blue {
+      background-color: #0f7dbc;
+      border-color: #5dc4ff;
+  }
+  
+  .button.red {
+      background-color: #ce3535;
+      border-color: #da6b58;
+  }
+  
+  .button.discord {
+      background-color: #7289da;
+      border-color: #bacaff;
+  }

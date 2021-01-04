@@ -1,0 +1,48 @@
+<app-dashboard></app-dashboard>
+<div class="container">
+    <br>
+    <div class="alert alert-green" role="alert">
+       <i class="fas fa-code"></i> Pardon our dust! This site is still in development and may lack functionality. Please report all issues to <b>Lee</b>.
+    </div>
+    <div class="row">
+       <div class="col-8">
+          <div class="container">
+             <div id="profile">
+                <div class="col">
+                   <div class="avatar"><img src="https://www.habbo.com/habbo-imaging/avatarimage?figure={{ CurrentUser?.look }}&amp;direction=3&amp;head_direction=3&amp;gesture=sml&amp;action=wav"> </div>
+                </div>
+                <div class="info"><b><i class="fas fa-user"></i> Username:</b> {{ CurrentUser?.username }}</div>
+                <div class="info"><b><i class="fas fa-comments"></i> Motto:</b> {{ CurrentUser?.motto }}</div>
+                <button class="button green" [routerLink]="['/client']"><i class="fas fa-sign-in-alt"></i> Enter the Hotel</button> 
+             </div>
+             <div class="card border-0 shadow my-5">
+                <div class="card-body p-5">
+                   News here, probably?
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="col-sm">
+          <div class="container">
+             <button class="button2 discord"><i class="fab fa-discord"></i> JOIN OUR DISCORD</button>
+             <button class="button2 twitter"><i class="fab fa-twitter"></i> FOLLOW OUR TWITTER</button>
+             <div class="card border-1 shadow my-5">
+                <div class="title">Happy new year!</div>
+                <div class="card-body p-3">
+                   Hello and a happy new year to all of our users, we hope you have a great 2021.
+                </div>
+             </div>
+          </div>
+          <div class="card border-1 shadow my-5">
+             <div class="title-admin">Lee</div>
+             <div class="card-body p-3">
+                <div style="background-color: #e4e4e4; height:150px; width:125px; float:left; margin-right:20px;" class="container"><img src="https://www.habbo.com/habbo-imaging/avatarimage?figure=lg-280-1428.hd-180-2.hr-3163-1403.ha-3620-0.ch-210-110.sh-305-92.&direction=3&head_direction=3&gesture=sml&action=wav"></div>
+                <p>
+                <h5>Founder</h5>
+                <i class="fas fa-comments"></i> <i>Shut the fuck up</i>
+                <span style="color:green; font-weight:bold;">Online</span>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>

@@ -1,0 +1,19 @@
+{
+    "password_salt": 10,
+    "database": {
+        "client": "mysql",
+        "connection": {
+            "host": "161.97.92.57",
+            "port": 3306,
+            "user": "devusr",
+            "password": "NiggerFaggot69*",
+            "database": "hotel"
+        }
+    },
+    "port": 80,
+    "session": {
+        "secret": "skyhotelv69",
+        "resave": "false",
+        "saveUninitialized": "true"
+    }
+}

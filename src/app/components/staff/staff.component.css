@@ -1,0 +1,10 @@
+.title-staff {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 115%;
+    color: #fff;
+    background-color: #24b0e0;
+    padding: 8px 14px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
