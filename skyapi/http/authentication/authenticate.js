@@ -14,7 +14,7 @@ export default class HttpAuthenticate {
     }
 
     generate_auth_token(req, res, next) {
-        AuthenticationHandler.set_auth_token(req.sky_session.user_id)
+        AuthenticationHandler.set_auth_token(req.sky_session.id)
         .then(result => {
             return res.status(200).json(result);
         })
@@ -25,10 +25,10 @@ export default class HttpAuthenticate {
 
         AuthenticationHandler.login(req.body.sky_username, req.body.sky_password, req.connection.remoteAddress, req.useragent)
         .then(result => {
-            return res.status(200).json(result);
+            return res.status(200).json({"token": result});
         })
         .catch(err => {
-            return res.status(200).json(err);
+            return res.status(401).json(err);
         })
     }
 }

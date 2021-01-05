@@ -1,6 +1,4 @@
 import HotelUser from "../../database/models/users/user";
-import Session from "../../database/models/api/session";
-import SessionHandler from "./session";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 

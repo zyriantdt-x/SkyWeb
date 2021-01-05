@@ -1,7 +1,6 @@
 import { RankResponse } from "./rank.response";
 
 export interface UserResponse {
-    error: string | undefined,
     id: number,
     username: string,
     rank: RankResponse,

@@ -10,15 +10,23 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class MeComponent implements OnInit {
   CurrentUser: UserResponse | undefined
-  constructor(private _userService: UserService, private router: Router) { }
+  constructor(private _userService: UserService, private router: Router) {
+    _userService.CurrentUserObservable
+    .subscribe(result => {
+      this.CurrentUser = result;
+    })
+  }
 
   ngOnInit(): void {
-    this._userService.get_current_user()
+    /*this._userService.get_current_user()
     .then(result => {
-      if(result.error) return this.router.navigate([ '/login' ]);
       this.CurrentUser = result;
       return;
     })
+    .catch(error => {
+      return this.router.navigate([ '/login' ]);
+    })*/
+
   }
 
 }

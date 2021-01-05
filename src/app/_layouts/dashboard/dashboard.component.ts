@@ -17,13 +17,18 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("auth_key") == null) {
+      this._router.navigate([ "/login" ]);
+      return;
+    }
+
     this.userService.get_current_user()
     .then(result => {
-      if(result.error) return this._router.navigate([ "/login" ]);
       this.CurrentUser = result;
       return
     })
     .catch(result => {
+      localStorage.clear();
       return this._router.navigate([ "/login" ]);
     })
 

@@ -17,10 +17,11 @@ export class LoginService {
     return new Promise((resolve, reject) => {
       this._httpClient.post<LoginResponse>(environment.API_URL + "/authentication/authenticate/login", form_data).toPromise()
       .then(result => {
-        if(result.error) return reject(result.error);
-
-        localStorage.setItem("auth_key", result.user_session);
+        localStorage.setItem("auth_key", result.token);
         resolve("hello uwu");
+      })
+      .catch(error => {
+        return reject(error);
       })
     })
   }

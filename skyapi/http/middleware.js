@@ -8,7 +8,6 @@ export default class HttpMiddleware {
         if (token == null) return res.sendStatus(401)
 
         jwt.verify(token, __config.jwtsecret, (err, user) => {
-            console.log(err)
             if (err) return res.sendStatus(403)
             let userId = user.id;
 
@@ -19,7 +18,7 @@ export default class HttpMiddleware {
             })
             .catch(err => {
                 console.log(err);
-                return res.sendStatus(400);
+                return res.sendStatus(401);
             })
         })
     }

@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(localStorage.getItem("auth_key") == null) { return; }
     this._userService.get_current_user()
     .then(result => {
-      if(!result.error) return this._router.navigate([ '/me' ]);
-      return;
+      return this._router.navigate([ '/me' ]);
     })
     .catch(result => {})
   }
@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
   doStuff() {
     this._loginService.doLogin(this.loginForm.value)
     .then(result => {
-      console.log("test");
       if(result != null) return this._router.navigate([ "/me" ]);
-      console.log("test");
       return;
     })
     .catch(reject => {
