@@ -5,6 +5,7 @@ import { ClientComponent } from './components/client/client.component';
 import { LoginComponent } from "./components/login/login.component";
 import { MeComponent } from './components/me/me.component';
 import { StaffComponent } from './components/staff/staff.component';
+import { AuthGuard } from './_helpers/auth.guard';
 import { DashboardComponent } from "./_layouts/dashboard/dashboard.component";
 import { SiteComponent } from "./_layouts/site/site.component";
 
@@ -17,9 +18,9 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
     ]
   },
-  { path: "me", component: MeComponent },
-  { path: "client", component: ClientComponent },
-  { path: "staff", component: StaffComponent },
+  { path: "me", component: MeComponent, canActivate: [AuthGuard] },
+  { path: "client", component: ClientComponent, canActivate: [AuthGuard] },
+  { path: "staff", component: StaffComponent, canActivate: [AuthGuard] },
 
   /*{
     path: "",

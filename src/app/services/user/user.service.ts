@@ -9,38 +9,21 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
-  public CurrentUserObservable: Observable<UserResponse>;
-  public CurrentUser: UserResponse | undefined;
+  //public CurrentUserObservable: Observable<UserResponse>;
+
+  private currentUserSubject: BehaviorSubject<UserResponse> | undefined;
+  public currentUser: Observable<UserResponse> | undefined;
+
   constructor(private _httpClient: HttpClient) {
-    this.CurrentUserObservable = this.current_user_as_observable();
+    if(localStorage.getItem('user') != null) {
+      this.currentUserSubject = new BehaviorSubject<UserResponse>(JSON.parse(localStorage.getItem('user') || "{}"));
+      this.currentUser = this.currentUserSubject.asObservable();
+    }
   }
 
-  get_current_user() {
-    return new Promise<UserResponse>((resolve, reject) => {
-      if(localStorage.getItem("auth_key") == null) {
-        reject(null);
-      }
-      let hdr = new HttpHeaders({
-        "Authorization": "Bearer " + localStorage.getItem("auth_key") || ""
-      })
-      this._httpClient.get<UserResponse>(environment.API_URL + "/hotel/users/current_user", {
-        headers: hdr
-      }).toPromise()
-      .then(result => {
-        resolve(result);
-      })
-      .catch(result => {
-        reject(result);
-      })
-    })
-  }
-
-  current_user_as_observable() {
-    return this._httpClient.get<UserResponse>(environment.API_URL + "/hotel/users/current_user", {
-      headers: new HttpHeaders({
-        "Authorization": "Bearer " + localStorage.getItem("auth_key") || ""
-      })
-    })
+  public get currentUserValue(): UserResponse | undefined {
+    if(typeof this.currentUserSubject == "undefined") return undefined;
+    return this.currentUserSubject.value;
   }
 
   get_total_online() {

@@ -15,9 +15,10 @@ export class LoginService {
 
   doLogin(form_data : object) {
     return new Promise((resolve, reject) => {
-      this._httpClient.post<LoginResponse>(environment.API_URL + "/authentication/authenticate/login", form_data).toPromise()
+      this._httpClient.post<any>(environment.API_URL + "/authentication/authenticate/login", form_data).toPromise()
       .then(result => {
         localStorage.setItem("auth_key", result.token);
+        localStorage.setItem("user", JSON.stringify(result.user));
         resolve("hello uwu");
       })
       .catch(error => {

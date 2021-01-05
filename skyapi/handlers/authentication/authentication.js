@@ -31,7 +31,7 @@ export default class AuthenticationHandler {
             if(user_name == null || user_pass == null) return reject({ error: "invalid_parameters_login" });
 
             return new HotelUser({username: user_name}).fetch({
-                columns: ['id', 'username', 'password', 'auth_ticket', 'ip_last']
+                columns: ['id', 'username', 'password']
             })
             .then(result => {
                 let userInfo = result.toJSON();
@@ -42,7 +42,29 @@ export default class AuthenticationHandler {
                     id: userInfo.id
                 }, __config.jwtsecret);
 
-                return resolve(key);
+                return new HotelUser({ id: userInfo.id }).fetch({
+                    columns: [
+                        "id",
+                        "username",
+                        "rank",
+                        "rank_vip",
+                        "credits",
+                        "vip_points",
+                        "activity_points",
+                        "look",
+                        "gender",
+                        "motto",
+                    ]
+                })
+                .then(usrx => {
+                    let userDataToUse = usrx.toJSON();
+
+                    let toReturn = {
+                        "token": key,
+                        "user": userDataToUse
+                    }
+                    return resolve(toReturn);
+                })
             })
             .catch(error => {
                 return reject({ error: "user_does_not_exist" });

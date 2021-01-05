@@ -25,7 +25,7 @@ export default class HttpAuthenticate {
 
         AuthenticationHandler.login(req.body.sky_username, req.body.sky_password)
         .then(result => {
-            return res.status(200).json({"token": result});
+            return res.status(200).json(result);
         })
         .catch(err => {
             return res.status(401).json(err);

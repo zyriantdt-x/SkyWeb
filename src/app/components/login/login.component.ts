@@ -25,11 +25,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     if(localStorage.getItem("auth_key") == null) { return; }
-    this._userService.get_current_user()
-    .then(result => {
-      return this._router.navigate([ '/me' ]);
-    })
-    .catch(result => {})
+    if (this._userService.currentUserValue) { 
+      this._router.navigate(['/me']);
+    }
   }
 
   doStuff() {

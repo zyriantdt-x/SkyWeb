@@ -18,13 +18,6 @@ export class ClientComponent implements OnInit, AfterViewInit {
 	}
 
 	ngOnInit(): void {
-		this.userService.get_current_user()
-		.then(result => {
-			return;
-		})
-		.catch(err => {
-			return this.router.navigate([ '/login' ]);
-		})
 	}
 
 	ngAfterViewInit(): void {
