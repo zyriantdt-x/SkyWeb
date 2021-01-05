@@ -26,7 +26,7 @@ export default class AuthenticationHandler {
          })
      }
 
-    static login(user_name, user_pass, user_ip, user_agent) {
+    static login(user_name, user_pass) {
         return new Promise((resolve, reject) => {
             if(user_name == null || user_pass == null) return reject({ error: "invalid_parameters_login" });
 

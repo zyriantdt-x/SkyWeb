@@ -23,7 +23,7 @@ export default class HttpAuthenticate {
     login(req, res, next) {
         if(req.body.sky_username == null || req.body.sky_password == null) return res.status(400).json({ error: "invalid_body" });
 
-        AuthenticationHandler.login(req.body.sky_username, req.body.sky_password, req.connection.remoteAddress, req.useragent)
+        AuthenticationHandler.login(req.body.sky_username, req.body.sky_password)
         .then(result => {
             return res.status(200).json({"token": result});
         })
