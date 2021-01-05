@@ -19,11 +19,24 @@ export class UserService {
       this.currentUserSubject = new BehaviorSubject<UserResponse>(JSON.parse(localStorage.getItem('user') || "{}"));
       this.currentUser = this.currentUserSubject.asObservable();
     }
+    this.update_user_info();
   }
 
   public get currentUserValue(): UserResponse | undefined {
     if(typeof this.currentUserSubject == "undefined") return undefined;
     return this.currentUserSubject.value;
+  }
+
+  update_user_info() {
+    this._httpClient.get<UserResponse>(environment.API_URL + "/hotel/users/current_user", {
+      headers: new HttpHeaders({
+        "Authorization": "Bearer " + localStorage.getItem("auth_key") || ""
+      })
+    }).toPromise()
+    .then(result => {
+      localStorage.setItem('user', JSON.stringify(result));
+      this.currentUserSubject?.next(result);
+    })
   }
 
   get_total_online() {
