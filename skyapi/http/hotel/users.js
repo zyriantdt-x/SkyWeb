@@ -2,7 +2,6 @@ import { Router } from "express";
 
 import HotelRank from "../../database/models/users/rank";
 import HotelUser from "../../database/models/users/user"
-import Session from "../../database/models/api/session";
 import HttpMiddleware from "../middleware";
 
 export default class HttpUsers {
@@ -16,7 +15,7 @@ export default class HttpUsers {
     }
 
     current_user(req, res, next) {
-        new HotelUser({ id: req.sky_session.user_id }).fetch({
+        new HotelUser({ id: req.sky_session.id }).fetch({
             columns: [
                 "id",
                 "username",
@@ -31,12 +30,10 @@ export default class HttpUsers {
             ]
         })
         .then(result => {
-            if(result == null) return res.status(200).json({ error: "no_row" });
-
             return res.status(200).json(result.toJSON());
         })
         .catch(result => {
-            return res.status(200).json({ error: "no_row" });
+            return res.status(400).json({ error: "no_row" });
         })
     }
 

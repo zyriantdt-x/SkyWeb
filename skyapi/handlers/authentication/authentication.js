@@ -2,6 +2,7 @@ import HotelUser from "../../database/models/users/user";
 import Session from "../../database/models/api/session";
 import SessionHandler from "./session";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export default class AuthenticationHandler {
     static makeid(length) {
@@ -29,37 +30,25 @@ export default class AuthenticationHandler {
 
     static login(user_name, user_pass, user_ip, user_agent) {
         return new Promise((resolve, reject) => {
-            if(user_name == null || user_pass == null || user_ip == null || user_agent == null) return reject({ error: "invalid_parameters_login" });
+            if(user_name == null || user_pass == null) return reject({ error: "invalid_parameters_login" });
 
             return new HotelUser({username: user_name}).fetch({
                 columns: ['id', 'username', 'password', 'auth_ticket', 'ip_last']
             })
             .then(result => {
-                if(result == null) return reject({ error: "invalid_user" });
+                let userInfo = result.toJSON();
 
-                let user_info = result.toJSON();
+                if(bcrypt.compareSync(user_pass, userInfo.password) == false) return reject({ error: "incorrect_password" });
 
-                if(bcrypt.compareSync(user_pass, user_info.password) == false) return reject({ error: "incorrect_password" });
+                let key = jwt.sign({
+                    id: userInfo.id
+                }, __config.jwtsecret);
 
-                return SessionHandler.create_session(user_info.id, user_ip, user_agent)
-                .then(session => {
-                    if(session == null) return reject("invalid_session");
-
-                    result.set({auth_ticket: session.user_session, ip_last: user_ip})
-                    
-                    return result.save()
-                    .then((result) =>
-                    {
-                        return resolve(session);
-                    })
-                })
-                .catch(err => {
-                    return reject({ error: err.detail });
-                })
+                return resolve(key);
             })
-            .catch(err => {
-                reject({ error: "no_user_exists" })
+            .catch(error => {
+                return reject({ error: "user_does_not_exist" });
             })
-        });
+        })
     }
 }

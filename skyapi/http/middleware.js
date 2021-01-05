@@ -1,19 +1,26 @@
-import SessionHandler from "../handlers/authentication/session";
+import HotelUser from "../database/models/users/user";
+import jwt from "jsonwebtoken";
 
 export default class HttpMiddleware {
     static is_authenticated(req, res, next) {
-        if(!req.headers.authentication) return res.status(200).json({ error: "no_auth_header" });
+        const authHeader = req.headers['authorization'];
+        const token = authHeader && authHeader.split(' ')[1]
+        if (token == null) return res.sendStatus(401)
 
-        SessionHandler.validate_session(req.headers.authentication, req.connection.remoteAddress, req.useragent)
-        .then(session => {
-            if(session == null) return res.status(200).json({ error: "no_session_exists" });
+        jwt.verify(token, __config.jwtsecret, (err, user) => {
+            console.log(err)
+            if (err) return res.sendStatus(403)
+            let userId = user.id;
 
-            req.sky_session = session.toJSON();
-
-            return next()
-        })
-        .catch(err => {
-            return res.status(200).json({ error: "no_session_exists" });
+            new HotelUser({ id: userId }).fetch()
+            .then(result => {
+                req.sky_session = result.toJSON();
+                return next();
+            })
+            .catch(err => {
+                console.log(err);
+                return res.sendStatus(400);
+            })
         })
     }
 }
