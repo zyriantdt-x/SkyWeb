@@ -4,7 +4,7 @@
     }
     
     .header {
-        background-color: #369dca;
+        background: linear-gradient(0deg, rgba(0,224,255,1) 0%, rgba(12,122,184,1) 100%);
         color: white;
         height: 300px;
         -webkit-box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.37);
@@ -13,12 +13,14 @@
         background-position: top right;
     }
     
-    
     .navbar-custom {
-        color: #FFFFFF;
-        background-color: #256b8a;
+        background-color: #41464b;
         font-weight: bold;
-        }
+    }
+
+	.navbar-custom .navbar-text { 
+        color: white; 
+    } 
         
     
     .button {
@@ -63,6 +65,11 @@
         background-color: #72b1da;
         border-color: #a1d2f3;
     }
+	
+	.button2.bug {
+		background-color: #bd4747;
+		border-color: #e69191;
+	}
     
     #profile {
         background-color: #4770b5;
@@ -80,11 +87,11 @@
         display: -ms-inline-flexbox;
         display: inline-flex;
         -webkit-box-shadow: 0 1px 0 2px rgba(0,0,0,.3);
-        box-shadow: 0 1px 0 2px rgba(0,0,0,.3);
-        background-color: black;
+        box-shadow: 0 1px 0 2px rgb(187 187 187 / 30%);
+        background-color: #324c71;
         border-radius: 50%;
-        height: 100px;
-        width: 100px;
+        height: 120px;
+        width: 120px;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
@@ -95,8 +102,13 @@
         position: relative;
         float: right;
         z-index: 20;
-        
+        margin-top: 25px;
     }
+	
+	.avatar img {
+		margin-top: -13px;
+		-webkit-filter: drop-shadow(2px 1px 0 #fff) drop-shadow(-2px 1px 0 #fff) drop-shadow(0 -2px 0 #fff);
+	}
     
     .info {
         border-radius: 5px;
@@ -134,5 +146,6 @@
     background-color: #40c372;
     color: white;
     font-weight: bold;
-    
+    margin-bottom: -5px;
+    margin-top: 15px;
     }
