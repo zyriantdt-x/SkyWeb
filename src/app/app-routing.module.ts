@@ -18,17 +18,11 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
     ]
   },
+  
   { path: "me", component: MeComponent, canActivate: [AuthGuard] },
   { path: "client", component: ClientComponent, canActivate: [AuthGuard] },
   { path: "staff", component: StaffComponent, canActivate: [AuthGuard] },
 
-  /*{
-    path: "",
-    component: DashboardComponent,
-    children: [
-      { path: "me", component: MeComponent }
-    ]
-  },*/
   { path: "**", redirectTo: "/login", pathMatch: "full" }
 ];
 

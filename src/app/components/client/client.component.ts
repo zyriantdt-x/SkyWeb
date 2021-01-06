@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
+import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -13,7 +13,7 @@ export class ClientComponent implements OnInit, AfterViewInit {
 	@ViewChild("client")
 	private elRef!: ElementRef;
 
-	constructor(private renderer: Renderer2, private userService: UserService, private router: Router) {
+	constructor(private renderer: Renderer2, private tokenStorage: TokenStorageService, private router: Router) {
 
 	}
 
@@ -21,8 +21,9 @@ export class ClientComponent implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit(): void {
-		this.userService.do_client_auth()
-		.then(auth_token => {
+		//this.userService.do_client_auth()
+		this.tokenStorage.getSSO()
+		.subscribe((auth_token: any) => {
 			let swfURL = "http://161.97.92.57/assets/swf/gordon/PRODUCTION-201701242205-837386173/Habbo.swf";
 			let swfBase = "http://161.97.92.57/assets/swf/gordon/PRODUCTION-201701242205-837386173/";
 			let flashVarsString = "";

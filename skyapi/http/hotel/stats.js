@@ -13,7 +13,7 @@ export default class HttpStats {
     total_online(req, res, next) {
         new HotelUser().where({ online: '1' }).count()
         .then(result => {
-            return res.status(200).json(result);
+            return res.status(200).json({ online: result });
         })
     }
 }

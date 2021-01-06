@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { UserResponse } from 'src/app/services/user/user.response';
-import { UserService } from 'src/app/services/user/user.service';
+import { StatsService } from 'src/app/services/stats/stats.service';
+import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,19 +10,14 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  CurrentUser!: UserResponse;
-  currentUserSubscription: Subscription | undefined;
-
-  TotalOnline: number | undefined;
-
-  constructor(private userService: UserService, private _router: Router) {
-    this.currentUserSubscription = this.userService.currentUser?.subscribe(user => {
-      this.CurrentUser = user;
-    });
-
-    this.userService.get_total_online()
-    .then(result => {
-      this.TotalOnline = result;
+  TotalOnline: number;
+  CurrentUser: any;
+  constructor(private tokenStorage: TokenStorageService, private _router: Router, private statsService: StatsService) {
+    this.TotalOnline = 0;
+    this.CurrentUser = tokenStorage.getUser();
+    this.statsService.getOnline()
+    .subscribe(data => {
+      this.TotalOnline = data.online
     })
   }
 

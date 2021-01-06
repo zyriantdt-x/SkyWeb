@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validator, Validators, FormArray } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user/user.service';
-
-import { LoginService } from "../../services/login/login.service";
+import { AuthService } from 'src/app/services/auth/auth.service';
+import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loginFailed: boolean;
 
-  constructor(private _formBuilder: FormBuilder, private _loginService: LoginService, private _router: Router, private _userService: UserService) { 
+  constructor(private _formBuilder: FormBuilder, private _router: Router, private authService: AuthService, private tokenStorage: TokenStorageService) { 
     this.loginFailed = false;
     this.loginForm = this._formBuilder.group({
       sky_username: ['', Validators.required],
@@ -24,19 +23,22 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(localStorage.getItem("auth_key") == null) { return; }
-    if (this._userService.currentUserValue) { 
+    if (this.tokenStorage.getToken()) {
       this._router.navigate(['/me']);
     }
   }
 
   doStuff() {
-    this._loginService.doLogin(this.loginForm.value)
-    .then(result => {
-      if(result != null) return this._router.navigate([ "/me" ]);
-      return;
-    })
-    .catch(reject => {
+    const username = this.loginForm.value.sky_username;
+    const password = this.loginForm.value.sky_password;
+
+    this.authService.login(username, password)
+    .subscribe(data => {
+      this.tokenStorage.saveToken(data.token);
+      this.tokenStorage.saveUser(data.user);
+
+      window.location.reload();
+    }, err => {
       this.loginFailed = true;
     })
   }

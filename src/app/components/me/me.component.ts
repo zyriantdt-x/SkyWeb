@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserResponse } from 'src/app/services/user/user.response';
-import { UserService } from 'src/app/services/user/user.service';
+import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 
 @Component({
   selector: 'app-me',
@@ -9,12 +8,10 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./me.component.css', '../../_layouts/dashboard/dashboard.component.css'],
 })
 export class MeComponent implements OnInit, OnDestroy {
-  CurrentUser!: UserResponse
+  CurrentUser: any
 
-  constructor(private _userService: UserService, private router: Router) {
-    this._userService.currentUser?.subscribe(user => {
-      this.CurrentUser = user;
-    });
+  constructor(private tokenStorage: TokenStorageService, private router: Router) {
+    this.CurrentUser = this.tokenStorage.getUser();
   }
 
   ngOnInit(): void {  }

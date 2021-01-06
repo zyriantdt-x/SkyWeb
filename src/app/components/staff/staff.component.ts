@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StaffResponse } from 'src/app/services/user/staff.response';
-import { UserService } from 'src/app/services/user/user.service';
+import { StatsService } from 'src/app/services/stats/stats.service';
 
 @Component({
   selector: 'app-staff',
@@ -9,14 +8,18 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class StaffComponent implements OnInit {
 
-  StaffData: StaffResponse | undefined;
-  constructor(private _userService: UserService) { }
+  StaffData: any;
+  constructor(private statsService: StatsService) { }
 
   ngOnInit(): void {
-    this._userService.get_staff_info()
+    /*this._userService.get_staff_info()
     .then(result => {
       this.StaffData = result;
       console.log(result)
+    })*/
+    this.statsService.getStaffPage()
+    .subscribe(data => {
+      this.StaffData = data;
     })
   }
 

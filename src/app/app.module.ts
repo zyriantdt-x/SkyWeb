@@ -10,10 +10,11 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './_layouts/dashboard/dashboard.component';
 import { SiteComponent } from './_layouts/site/site.component';
 
-import { LoginService } from "./services/login/login.service";
 import { MeComponent } from './components/me/me.component';
 import { ClientComponent } from './components/client/client.component';
 import { StaffComponent } from './components/staff/staff.component';
+
+import { authInterceptorProviders } from "./_helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { StaffComponent } from './components/staff/staff.component';
     HttpClientModule
   ],
   providers: [
-    LoginService
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 })
