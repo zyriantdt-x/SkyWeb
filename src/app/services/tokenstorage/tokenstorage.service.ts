@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
-  constructor(private http: HttpClient) { }
+  private userInfo: BehaviorSubject<any>;
+  constructor(private http: HttpClient) {
+    this.userInfo = new BehaviorSubject<any>(null);
+  }
 
   logOut(): void {
     localStorage.clear();
@@ -28,15 +32,24 @@ export class TokenStorageService {
   }
 
   public getUser(): any {
+    this.updatedUser();
     const user = localStorage.getItem("user");
     if (user) {
       return JSON.parse(user);
     }
 
-    return {};
+    return null;
   }
 
   public getSSO(): any {
     return this.http.get<any>(environment.API_URL + "/authentication/authenticate/generate_auth_token");
+  }
+
+  private updatedUser() {
+    this.http.get<any>(environment.API_URL + "/hotel/users/current_user").toPromise()
+    .then(result => {
+      localStorage.setItem("user", JSON.stringify(result));
+    })
+    .catch(err => {})
   }
 }
