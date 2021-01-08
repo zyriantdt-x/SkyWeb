@@ -1,15 +1,15 @@
 <app-dashboard></app-dashboard>
 
 <div class="container">
-   <div class="d-flex justify-content-center" class="row">
+   <div class="d-flex" style="justify-content-center" class="row">
       <div class="col-7">
          <div class="row">
-            <div class="col-6" *ngFor="let staff of StaffData?.staff">
+            <div class="col-6" style="margin-right: -60px; margin-bottom: -85px" *ngFor="let staff of StaffData?.staff">
                <div style="margin-right:50px;" class="container">
                   <div class="card border-1 shadow my-5">
                      <div class="title-admin">{{ staff.username }}</div>
                      <div class="card-body p-3">
-                        <div style="background-color: #efecec; height:120px; width:90px; float:left; display: block;margin: 0 auto; margin-right:30px; border-width:1px; border-color:#d8d7d7; border-style:solid; " class="container"><img src="https://www.habbo.com/habbo-imaging/avatarimage?figure={{ staff.look }}&direction=3&head_direction=3&gesture=sml&action=wav"></div>
+                        <div style="background-color: #efecec; height:125px; width:80px; float:left; display: block;margin: 0 auto; margin-right:30px; border-width:1px; border-color:#d8d7d7; border-style:solid; " class="container"><img style="left: 25px; position: absolute;" src="https://www.habbo.com/habbo-imaging/avatarimage?figure={{ staff.look }}&direction=3&head_direction=3&gesture=sml&action=wav"></div>
                         <p>
                         <h6 style="color:#b52c2c;">{{ staff.rank.name }}</h6>
                         <i class="fas fa-comments"></i>&nbsp;<i>{{ staff.motto }}</i><br>
@@ -20,12 +20,12 @@
             </div>
          </div>
       </div>
-      <div class="col-5">
+      <div class="col-4">
          <div class="card border-1 shadow my-5">
             <div class="title-staff">Staff Team</div>
             <div class="card-body p-3">
                <img style="float:right"src="https://images.habbo.com/c_images/album1584/ADM.png">
-               <span>blablabla</span>
+               <span>The <b>sky staff team</b> are specially selected members of the community who help to run and moderate the game. All members of the sky team are listed on this page and can be identified in-game by their staff badge.</span>
             </div>
          </div>
       </div>
