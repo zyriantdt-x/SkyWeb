@@ -7,10 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class TokenStorageService {
-  private userInfo: BehaviorSubject<any>;
-  constructor(private http: HttpClient) {
-    this.userInfo = new BehaviorSubject<any>(null);
-  }
+  constructor(private http: HttpClient) {}
 
   logOut(): void {
     localStorage.clear();
@@ -39,6 +36,22 @@ export class TokenStorageService {
     }
 
     return null;
+  }
+
+  public getUserObservable(): Observable<any> {
+    return new Observable((that) => {
+      const user = localStorage.getItem("user");
+      if (user) {
+        that.next(JSON.parse(user));
+      } else { return that.next(null) }
+
+      this.http.get<any>(environment.API_URL + "/hotel/users/current_user").toPromise()
+      .then(result => {
+        localStorage.setItem("user", JSON.stringify(result));
+        that.next(result);
+      })
+      .catch(err => {})
+    })
   }
 
   public getSSO(): any {

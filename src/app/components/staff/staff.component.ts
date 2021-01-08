@@ -12,11 +12,6 @@ export class StaffComponent implements OnInit {
   constructor(private statsService: StatsService) { }
 
   ngOnInit(): void {
-    /*this._userService.get_staff_info()
-    .then(result => {
-      this.StaffData = result;
-      console.log(result)
-    })*/
     this.statsService.getStaffPage()
     .subscribe(data => {
       this.StaffData = data;

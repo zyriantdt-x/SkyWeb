@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 export default class HttpMiddleware {
     static is_authenticated(req, res, next) {
         const authHeader = req.headers['authorization'];
+        if(!authHeader) return res.sendStatus(401);
         let token = authHeader.split(' ')[1]
         if (token == null) return res.sendStatus(401)
 

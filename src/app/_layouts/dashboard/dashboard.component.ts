@@ -13,8 +13,11 @@ export class DashboardComponent implements OnInit {
   TotalOnline: number;
   CurrentUser: any;
   constructor(private tokenStorage: TokenStorageService, private _router: Router, private statsService: StatsService) {
-    this.TotalOnline = 0;
-    this.CurrentUser = tokenStorage.getUser();
+    tokenStorage.getUserObservable()
+    .subscribe(result => {
+      this.CurrentUser = result;
+    })
+
     this.statsService.getOnline()
     .subscribe(data => {
       this.TotalOnline = data.online

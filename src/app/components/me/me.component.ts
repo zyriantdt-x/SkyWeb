@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 
 @Component({
@@ -11,7 +12,9 @@ export class MeComponent implements OnInit, OnDestroy {
   CurrentUser: any
 
   constructor(private tokenStorage: TokenStorageService, private router: Router) {
-    this.CurrentUser = this.tokenStorage.getUser();
+    tokenStorage.getUserObservable().subscribe(result => {
+      this.CurrentUser = result;
+    })
   }
 
   ngOnInit(): void {  }
