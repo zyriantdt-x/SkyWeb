@@ -15,6 +15,10 @@ import { ClientComponent } from './components/client/client.component';
 import { StaffComponent } from './components/staff/staff.component';
 
 import { authInterceptorProviders } from "./_helpers/auth.interceptor";
+import { RegisterComponent } from './components/register/register.component';
+import { StoreComponent } from './components/store/store.component';
+import { LeaderboardsComponent } from './components/leaderboards/leaderboards.component';
+import { OnlineComponent } from './components/online/online.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,10 @@ import { authInterceptorProviders } from "./_helpers/auth.interceptor";
     MeComponent,
     ClientComponent,
     StaffComponent,
+    RegisterComponent,
+    StoreComponent,
+    LeaderboardsComponent,
+    OnlineComponent,
   ],
   imports: [
     BrowserModule,
