@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-online',
   templateUrl: './online.component.html',
-  styleUrls: ['./online.component.css']
+  styleUrls: ['./online.component.css', '../../_layouts/dashboard/dashboard.component.css']
 })
 export class OnlineComponent implements OnInit {
 
