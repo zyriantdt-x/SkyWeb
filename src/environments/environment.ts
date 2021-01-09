@@ -13,8 +13,8 @@ export const environment = {
 
   URL: "http://sky-hotel.co.uk",
 
-  HABBO_SWF: "http://sky-hotel.co.uk/assets/swf/gordon/PRODUCTION-201701242205-837386173/Habbo.swf",
-  PRODUCTION_BASE: "http://sky-hotel.co.uk/assets/swf/gordon/PRODUCTION-201701242205-837386173/",
+  HABBO_SWF: "http://sky-hotel.co.uk/assets/swf/gordon/PRODUCTION-202006192205-424220153/Habbo.swf",
+  PRODUCTION_BASE: "http://sky-hotel.co.uk/assets/swf/gordon/PRODUCTION-202006192205-424220153/",
 
   EXTERNAL_VARIABLES: "http://sky-hotel.co.uk/assets/swf/gamedata/external_variables.txt",
   EXTERNAL_TEXTS: "http://sky-hotel.co.uk/assets/swf/gamedata/external_flash_texts.txt",
@@ -23,7 +23,7 @@ export const environment = {
   EXTERNAL_OVERRIDE_TEXTS: "http://sky-hotel.co.uk/assets/swf/gamedata/override/external_flash_override_texts.txt",
   
   FIGURE_DATA: "http://sky-hotel.co.uk/assets/swf/gamedata/figuredata.xml",
-  FIGURE_MAP: "http://sky-hotel.co.uk/assets/swf/gordon/PRODUCTION-201701242205-837386173/figuremap.xml",
+  FIGURE_MAP: "http://sky-hotel.co.uk/assets/swf/gordon/PRODUCTION-202006192205-424220153/figuremap.xml",
 
   PRODUCT_DATA: "http://sky-hotel.co.uk/assets/swf/gamedata/productdata.txt",
   FURNI_DATA: "http://sky-hotel.co.uk/assets/swf/gamedata/furnidata.xml",
