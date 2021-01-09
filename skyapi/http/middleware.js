@@ -23,13 +23,4 @@ export default class HttpMiddleware {
             })
         })
     }
-
-    static is_allowed_ip(req, res, next) {
-        if(__config.allowed_ips.includes(req.connection.remoteAddress)) {
-            next();
-        }
-        else {
-            res.sendStatus(401);
-        }
-    }
 }

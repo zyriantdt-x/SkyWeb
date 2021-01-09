@@ -2,15 +2,18 @@ import express from "express";
 import bodyParser from "body-parser";
 import useragent from "express-useragent";
 
+import { IpFilter, IpDeniedError } from "express-ipfilter";
+
 import HttpRouter from "./router";
-import HttpMiddleware from "./middleware"
 
 export default class HttpServer {
     constructor() {
         let app = express();
 
         app.set('trust proxy', true);
-        app.use(HttpMiddleware.is_allowed_ip);
+
+        app.use(IpFilter(__config.allowed_ips, { mode: allow }));
+        
         app.use(express.static(__base + '/dist'));
 
         app.use(useragent.express());
@@ -24,6 +27,15 @@ export default class HttpServer {
             
             return res.sendFile(__base + '/dist/index.html');
         });
+
+        app.use((err, req, res) => {
+            console.log('Error handler', err)
+            if (err instanceof IpDeniedError) {
+              res.sendStatus(401)
+            } else {
+              res.sendStatus(err.status || 500)
+            }
+        })
 
         return app;
     }
