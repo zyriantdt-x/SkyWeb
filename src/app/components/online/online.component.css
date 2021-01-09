@@ -1,0 +1,19 @@
+.title-online {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 115%;
+    color: #fff;
+    background-color: #3da943;
+    padding: 8px 14px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.online-box {
+    background-color: #5cb85c;
+    display: block;
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    color: white;
+}
