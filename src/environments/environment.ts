@@ -8,7 +8,7 @@ export const environment = {
   API_URL: "/api",
 
 
-  CLIENT_HOST: "sky-hotel.co.uk",
+  CLIENT_HOST: "161.97.92.57",
   CLIENT_PORT: "30000",
 
   URL: "http://sky-hotel.co.uk",
