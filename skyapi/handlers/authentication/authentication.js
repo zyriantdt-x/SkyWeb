@@ -26,7 +26,7 @@ export default class AuthenticationHandler {
          })
      }
 
-    static login(user_name, user_pass) {
+    static login(user_name, user_pass, user_ip) {
         return new Promise((resolve, reject) => {
             if(user_name == null || user_pass == null) return reject({ error: "invalid_parameters_login" });
 
@@ -52,9 +52,12 @@ export default class AuthenticationHandler {
                         "look",
                         "gender",
                         "motto",
+                        "ip_current"
                     ]
                 })
                 .then(usrx => {
+                    usrx.set({ ip_current: user_ip });
+                    usrx.save();
                     let userDataToUse = usrx.toJSON();
 
                     let toReturn = {
