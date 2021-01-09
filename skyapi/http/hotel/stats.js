@@ -28,7 +28,7 @@ export default class HttpStats {
                 'online'
             ]
         }).then(result => {
-            return res.status(200).json(result.toJSON());
+            return res.status(200).json({ online: result.toJSON() });
         })
     }
 }

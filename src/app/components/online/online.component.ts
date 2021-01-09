@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatsService } from 'src/app/services/stats/stats.service';
 
 @Component({
   selector: 'app-online',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OnlineComponent implements OnInit {
 
-  constructor() { }
+  OnlineUsers: any
+  constructor(private statsService: StatsService) { }
 
   ngOnInit(): void {
+    this.statsService.getOnlinePage()
+    .subscribe(result => {
+      this.OnlineUsers = result;
+    })
   }
 
 }

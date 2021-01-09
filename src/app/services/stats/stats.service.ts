@@ -16,4 +16,8 @@ export class StatsService {
   getStaffPage() {
     return this.http.get<any>(environment.API_URL + "/hotel/users/staff_page_info")
   }
+
+  getOnlinePage() {
+    return this.http.get<any>(environment.API_URL + "/hotel/stats/online_users");
+  }
 }
