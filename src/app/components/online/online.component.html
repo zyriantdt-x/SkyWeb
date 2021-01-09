@@ -2,14 +2,14 @@
 
 <div class="row">
 	<div class="container">
-		<div style="margin-right: -60px; margin-bottom: -85px">
-			<div style="margin-right:50px;" class="container">
-				<div class="card border-1 shadow my-5">
-					<div class="title-online"><i class="fas fa-signal"></i> ONLINE NOW</div>
+		<div class="container">
+			<div class="card border-1 shadow my-5">
+				<div class="title-online"><i class="fas fa-signal"></i> ONLINE NOW</div>
+				<div style="margin-left:10px;" class="row">
 					<div class="online-box" *ngFor="let user of OnlineUsers?.online">
-						<img style="float:left;-webkit-filter: drop-shadow(2px 1px 0 #fff) drop-shadow(-2px 1px 0 #fff) drop-shadow(0 -2px 0 #fff); position: absolute;
-						bottom: 8px;
-						left: 25px;" src="https://www.habbo.com/habbo-imaging/avatarimage?figure={{ user.look }}&direction=3&head_direction=3&gesture=sml&headonly=1">{{
+						<img style="float:left;-webkit-filter: drop-shadow(2px 1px 0 #fff) drop-shadow(-2px 1px 0 #fff) drop-shadow(0 -2px 0 #fff); margin-top: -16px;
+						margin-left: -10px;"
+							src="https://www.habbo.com/habbo-imaging/avatarimage?figure={{ user.look }}&direction=3&head_direction=3&gesture=sml&headonly=1">{{
 						user.username }}
 					</div>
 				</div>
