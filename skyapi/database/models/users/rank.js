@@ -1,7 +1,7 @@
 import Adapter from "../../adapter"
 
 class HotelRank extends Adapter.Model {
-    get tableName() { return 'ranks'; }
+    get tableName() { return 'permissions'; }
     get hasTimestamps() { return false; }
 }
 
