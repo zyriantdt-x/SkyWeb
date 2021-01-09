@@ -50,6 +50,7 @@ export default class HttpUsers {
                 "look",
                 "gender",
                 "motto",
+                "online"
             ],
             withRelated: [ 'rank' ]
         })
