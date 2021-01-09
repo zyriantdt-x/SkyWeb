@@ -12,7 +12,7 @@ export default class HttpServer {
 
         app.set('trust proxy', true);
 
-        app.use(IpFilter(__config.allowed_ips, { mode: "allow" }));
+        app.use(IpFilter(__config.allowed_ips, { mode: "allow", logLevel: "deny" }));
 
         app.use(express.static(__base + '/dist'));
 
