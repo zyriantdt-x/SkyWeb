@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import useragent from "express-useragent";
+import { IpFilter } from "express-ipfilter"
 
 import HttpRouter from "./router";
 
@@ -12,6 +13,8 @@ export default class HttpServer {
 
         app.use(express.static(__base + '/dist'));
 
+
+        app.use(IpFilter(__config.allowed_ips, { mode: "allow" }))
         app.use(useragent.express());
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
