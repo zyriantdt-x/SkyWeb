@@ -1,20 +1,18 @@
 import express from "express";
 import bodyParser from "body-parser";
 import useragent from "express-useragent";
-import { IpFilter } from "express-ipfilter"
 
 import HttpRouter from "./router";
+import HttpMiddleware from "./middleware"
 
 export default class HttpServer {
     constructor() {
         let app = express();
 
         app.set('trust proxy', true);
-
+        app.use(HttpMiddleware.is_allowed_ip);
         app.use(express.static(__base + '/dist'));
 
-
-        app.use(IpFilter(__config.allowed_ips, { mode: "allow" }))
         app.use(useragent.express());
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
