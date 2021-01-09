@@ -13,7 +13,7 @@ export default class HttpServer {
         app.set('trust proxy', true);
 
         app.use(IpFilter(__config.allowed_ips, { mode: allow }));
-        
+
         app.use(express.static(__base + '/dist'));
 
         app.use(useragent.express());
@@ -29,7 +29,7 @@ export default class HttpServer {
         });
 
         app.use((err, req, res) => {
-            console.log('Error handler', err)
+            console.error('Error handler => ', err)
             if (err instanceof IpDeniedError) {
               res.sendStatus(401)
             } else {
