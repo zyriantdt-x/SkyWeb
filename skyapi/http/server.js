@@ -15,6 +15,7 @@ export default class HttpServer {
         app.use(IpFilter(__config.allowed_ips, { mode: "allow", logLevel: "deny" }));
 
         app.use(express.static(__base + '/dist'));
+        app.use("/arc", express.static(__base + "/arc_assets"));
 
         app.use(useragent.express());
         app.use(bodyParser.urlencoded({ extended: true }));

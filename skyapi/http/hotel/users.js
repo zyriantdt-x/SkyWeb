@@ -20,10 +20,8 @@ export default class HttpUsers {
                 "id",
                 "username",
                 "rank",
-                "rank_vip",
                 "credits",
-                "vip_points",
-                "activity_points",
+                "pixels",
                 "look",
                 "gender",
                 "motto",
@@ -47,14 +45,11 @@ export default class HttpUsers {
                 "id",
                 "username",
                 "rank",
-                "rank_vip",
                 "credits",
-                "vip_points",
-                "activity_points",
+                "pixels",
                 "look",
                 "gender",
                 "motto",
-                "online"
             ],
             withRelated: [ 'rank' ]
         })
