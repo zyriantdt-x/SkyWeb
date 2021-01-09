@@ -28,7 +28,7 @@ export default class HttpServer {
             return res.sendFile(__base + '/dist/index.html');
         });
 
-        app.use((err, req, res) => {
+        app.use((err, req, res, next) => {
             console.error('Error handler => ', err)
             if (err instanceof IpDeniedError) {
               res.sendStatus(401)
