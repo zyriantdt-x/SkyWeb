@@ -31,4 +31,8 @@ export default class HttpAuthenticate {
             return res.status(401).json(err);
         })
     }
+
+    register(req, res, next) {
+        
+    }
 }

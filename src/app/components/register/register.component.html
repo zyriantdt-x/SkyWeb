@@ -10,7 +10,7 @@
                             <strong>Oh no!</strong> Registration failed.
                         </div>
                         <div style="height: 200px">
-                            <form [formGroup]="registrationForm" >
+                            <form [formGroup]="registrationForm" (submit)="submit()">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Username" id="reg_username"
                                         formControlName="reg_username" required

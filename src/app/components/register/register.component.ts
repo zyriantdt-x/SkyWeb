@@ -48,4 +48,8 @@ export class RegisterComponent implements OnInit {
     return { 'match': true };
   }
 
+  submit() {
+    console.log(this.registrationForm.value);
+  }
+
 }
