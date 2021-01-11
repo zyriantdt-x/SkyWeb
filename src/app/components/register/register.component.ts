@@ -60,7 +60,6 @@ export class RegisterComponent implements OnInit {
 
       window.location.reload();
     }, err => {
-      console.log(err);
       console.log("Error code: " + err.error.error.message);
       this.localeService.get_locale(err.error.error.message).subscribe(result => {
         this.registrationFailedReason = result.value;

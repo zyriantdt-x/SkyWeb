@@ -179,7 +179,6 @@ export default class AuthenticationHandler {
                 return resolve(null)
             })
             .catch(err => {
-                console.log(err);
                 return reject(err);
             })
         })
