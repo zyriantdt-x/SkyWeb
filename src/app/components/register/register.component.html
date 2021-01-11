@@ -6,8 +6,8 @@
                     <div class="card-body p-5">
                         <h1 class="font-weight-light">Register an Account</h1>
                         <p class="lead">Join our amazing community today!</p>
-                        <div class="alert alert-danger" *ngIf="registrationFailed">
-                            <strong>Oh no!</strong> Registration failed.
+                        <div class="alert alert-danger" *ngIf="registrationFailedReason">
+                            <strong>Oh no!</strong> {{ registrationFailedReason }}
                         </div>
                         <div style="height: 200px">
                             <form [formGroup]="registrationForm" (submit)="submit()">
@@ -32,8 +32,8 @@
                                             [ngClass]="{'is-valid': !registrationForm.get('passwordGroup')?.errors?.match && (registrationForm.get('passwordGroup.reg_passwordtwo')?.valid && (registrationForm.get('passwordGroup.reg_passwordtwo')?.dirty || registrationForm.get('passwordGroup.reg_passwordtwo')?.touched))}">
                                     </div>
                                 </div>
-                                <button type="submit" class="button register" [disabled]="!registrationForm.valid"><i
-                                        class="fas fa-sign-in-alt"></i> Register</button>
+                                <button type="submit" class="button register" [disabled]="!registrationForm.valid"><i class="fas fa-sign-in-alt"></i> Register</button>
+                                <br><br>
                             </form>
                         </div>
                     </div>

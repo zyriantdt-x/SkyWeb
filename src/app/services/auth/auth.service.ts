@@ -17,5 +17,11 @@ export class AuthService {
     });
   }
 
-  //register
+  register(username: string, password: string, email: string): Observable<any> {
+    return this.http.post<any>(environment.API_URL + "/authentication/authenticate/register", {
+      username: username,
+      password: password,
+      email: email
+    })
+  }
 }

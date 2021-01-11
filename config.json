@@ -40,5 +40,17 @@
         "2405:8100::/32",
         "2a06:98c0::/29",
         "2c0f:f248::/32"
-    ]
+    ],
+    "hotel": {
+        "new_user": {
+            "motto": "I'm new to Sky!",
+            "figure": "",
+            "gender": "M",
+            "rank": 1,
+            "credits": 1000,
+            "duckets": 1000,
+            "diamonds": 10,
+            "home_room": 202
+        }
+    }
 }

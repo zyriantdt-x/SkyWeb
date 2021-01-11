@@ -8,6 +8,7 @@ export default class HttpAuthenticate {
         let router = Router();
 
         router.post("/login", this.login)
+        router.post("/register", this.register)
         router.get("/generate_auth_token", HttpMiddleware.is_authenticated, this.generate_auth_token);
 
         return router;
@@ -33,6 +34,22 @@ export default class HttpAuthenticate {
     }
 
     register(req, res, next) {
-        
+        if(req.body.username == null || req.body.password == null || req.body.email == null) return res.status(400).json({ error: "invalid_body" });
+
+        AuthenticationHandler.register(req.body.username, req.body.password, req.body.email, req.headers['CF-Connecting-IP'])
+        .then(() => {
+            AuthenticationHandler.login(req.body.username, req.body.password, req.headers['CF-Connecting-IP'])
+            .then(result => {
+                return res.status(200).json(result);
+            })
+            .catch(err => {
+                console.log(err);
+                return res.status(401).json({ error: err });
+            })
+        })
+        .catch(err => {
+            console.log(err);
+            return res.status(401).json({ error: err });
+        })
     }
 }
