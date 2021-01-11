@@ -14,9 +14,10 @@ export default class HttpLocale {
         if(req.body.key == null) return res.sendStatus(400)
         new WebLocale({ key: req.body.key }).fetch()
         .then(result => {
-            return res.status(200).json({ string: result.toJSON().value });
+            return res.status(200).json({ value: result.toJSON().value });
         })
         .catch(err => {
+            console.log(err);
             return res.sendStatus(400);
         })
     }
