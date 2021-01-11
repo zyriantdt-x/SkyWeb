@@ -19,6 +19,7 @@
   .button.red {
       background-color: #ce3535;
       border-color: #da6b58;
+      margin-right: 10px;
   }
   
   .button.discord {
