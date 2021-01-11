@@ -8,3 +8,25 @@
     letter-spacing: 0.2px;
     text-align: center;
 }
+
+.title-skystaff {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 115%;
+    color: #fff;
+    background-color: #b52c2c;
+    padding: 8px 14px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
+
+.title-skysadmin {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 115%;
+    color: #fff;
+    background-color: #b52c2c;
+    padding: 8px 14px;
+    letter-spacing: 0.2px;
+    text-align: center;
+}
