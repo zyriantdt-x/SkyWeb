@@ -22,6 +22,7 @@ export default class HttpAuthenticate {
     }
 
     login(req, res, next) {
+        if(!req.headers['CF-Connecting-IP']) req.headers['CF-Connecting-IP'] = req.connection.remoteAddress;
         if(req.body.sky_username == null || req.body.sky_password == null) return res.status(400).json({ error: "invalid_body" });
 
         AuthenticationHandler.login(req.body.sky_username, req.body.sky_password, req.headers['CF-Connecting-IP'])
@@ -34,6 +35,7 @@ export default class HttpAuthenticate {
     }
 
     register(req, res, next) {
+        if(!req.headers['CF-Connecting-IP']) req.headers['CF-Connecting-IP'] = req.connection.remoteAddress;
         if(req.body.username == null || req.body.password == null || req.body.email == null) return res.status(400).json({ error: "invalid_body" });
 
         AuthenticationHandler.register(req.body.username, req.body.password, req.body.email, req.headers['CF-Connecting-IP'])

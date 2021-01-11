@@ -170,7 +170,7 @@ export default class AuthenticationHandler {
             })
             .then(result => {
                 return new HotelUserCurrency({
-                    user_id: result.toJSON().id,
+                    user_id: result.toJSON().user_id,
                     type: '5',
                     amount: __config.hotel.new_user.diamonds
                 }).save(null, { method: 'insert' });
@@ -179,6 +179,7 @@ export default class AuthenticationHandler {
                 return resolve(null)
             })
             .catch(err => {
+                console.log(err);
                 return reject(err);
             })
         })
