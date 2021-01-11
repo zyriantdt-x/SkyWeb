@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css','../../_layouts/site/site.component.css']
+  styleUrls: ['./register.component.css','../../_layouts/site/site.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RegisterComponent implements OnInit {
   registrationForm: FormGroup
   registrationFailed: boolean
 
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder, private tokenStorage: TokenStorageService, private router: Router) { 
     this.registrationFailed = false;
 
     this.registrationForm = this.formBuilder.group({
@@ -26,6 +29,9 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if (this.tokenStorage.getToken()) {
+      this.router.navigate(['/me']);
+    }
   }
 
   private passwordMatcher(c: AbstractControl): { [key: string]: boolean } | null {

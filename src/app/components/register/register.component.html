@@ -6,11 +6,11 @@
                     <div class="card-body p-5">
                         <h1 class="font-weight-light">Register an Account</h1>
                         <p class="lead">Join our amazing community today!</p>
-                        <div class="alert alert-danger" *ngIf="registerFailed">
+                        <div class="alert alert-danger" *ngIf="registrationFailed">
                             <strong>Oh no!</strong> Registration failed.
                         </div>
                         <div style="height: 200px">
-                            <form [formGroup]="registrationForm" (submit)="doStuff()">
+                            <form [formGroup]="registrationForm" >
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="Username" id="reg_username"
                                         formControlName="reg_username" required
@@ -19,18 +19,19 @@
                                 <div class="mb-3">
                                     <input type="email" class="form-control" placeholder="Email address" id="email"
                                         formControlName="reg_email" required
-                                        [ngClass]="{'is-valid': registrationForm.controls.reg_email.valid && (registrationForm.controls.reg_email.dirty || registrationForm.controls.reg_email.touched)}">
+                                        [ngClass]="{'is-valid': registrationForm.get('reg_email')?.valid && (registrationForm.get('reg_email')?.dirty || registrationForm.get('reg_email')?.touched)}">
                                 </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" id="password"
-                                        formControlName="reg_password" required
-                                        [ngClass]="{'is-valid': registrationForm.controls.passwordGroup.reg_password.valid && (registrationForm.controls.passwordGroup.reg_password.dirty || registrationForm.controls.passwordGroup.reg_password.touched)}">
+                                <div formGroupName="passwordGroup">
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" placeholder="Password" id="password"
+                                            formControlName="reg_password" required
+                                            [ngClass]="{'is-valid': registrationForm.get('passwordGroup.reg_password')?.valid && (registrationForm.get('passwordGroup.reg_password')?.dirty || registrationForm.get('passwordGroup.reg_password')?.touched)}">
+                                    </div>
+                                    <div class="mb-3">
+                                        <input type="password" class="form-control" placeholder="Repeat Password" id="passwordtwo" formControlName="reg_passwordtwo" required
+                                            [ngClass]="{'is-valid': !registrationForm.get('passwordGroup')?.errors?.match && (registrationForm.get('passwordGroup.reg_passwordtwo')?.valid && (registrationForm.get('passwordGroup.reg_passwordtwo')?.dirty || registrationForm.get('passwordGroup.reg_passwordtwo')?.touched))}">
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Repeat Password" id="password" formControlName="reg_passwordtwo" required
-                                        [ngClass]="{'is-valid': registrationForm.controls.passwordGroup.reg_passwordtwo.valid && (registrationForm.controls.passwordGroup.sky_passreg_passwordtwoword.dirty || registrationForm.controls.passwordGroup.reg_passwordtwo.touched)}">
-                                </div>
-
                                 <button type="submit" class="button register" [disabled]="!registrationForm.valid"><i
                                         class="fas fa-sign-in-alt"></i> Register</button>
                             </form>
