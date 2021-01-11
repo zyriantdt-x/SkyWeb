@@ -126,7 +126,6 @@ export default class AuthenticationHandler {
     }
 
     static register(username, password, email, user_ip) {
-        user_ip = "127.0.0.1"
         return new Promise((resolve, reject) => {
             if(username == null || password == null || email == null) return reject({ message: "invalid_parameters_reg" });
 

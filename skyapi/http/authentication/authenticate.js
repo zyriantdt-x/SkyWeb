@@ -43,12 +43,10 @@ export default class HttpAuthenticate {
                 return res.status(200).json(result);
             })
             .catch(err => {
-                console.log(err);
                 return res.status(401).json({ error: err });
             })
         })
         .catch(err => {
-            console.log(err);
             return res.status(401).json({ error: err });
         })
     }
