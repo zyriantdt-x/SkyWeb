@@ -1,4 +1,5 @@
 import HotelUser from "../../database/models/users/user";
+import HotelUserCurrency from "../../database/models/users/currency"
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -159,6 +160,20 @@ export default class AuthenticationHandler {
                     machine_id: '',
                     home_room: __config.hotel.new_user.home_room
                 }).save(null, {method: 'insert'});
+            })
+            .then(result => {
+                return new HotelUserCurrency({
+                    user_id: result.toJSON().id,
+                    type: '0',
+                    amount: __config.hotel.new_user.duckets
+                }).save(null, { method: 'insert' });
+            })
+            .then(result => {
+                return new HotelUserCurrency({
+                    user_id: result.toJSON().id,
+                    type: '5',
+                    amount: __config.hotel.new_user.diamonds
+                }).save(null, { method: 'insert' });
             })
             .then((result) => {
                 return resolve(null)
