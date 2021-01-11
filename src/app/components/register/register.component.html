@@ -1,1 +1,42 @@
-<p>register works!</p>
+<div class="container">
+    <div class="row align-items-start">
+        <div class="col">
+            <div class="container">
+                <div class="card border-0 shadow my-5">
+                    <div class="card-body p-5">
+                        <h1 class="font-weight-light">Register an Account</h1>
+                        <p class="lead">Join our amazing community today!</p>
+                        <div class="alert alert-danger" *ngIf="registerFailed">
+                            <strong>Oh no!</strong> Registeration failed.
+                        </div>
+                        <div style="height: 200px">
+                            <form [formGroup]="registerForm" (submit)="doStuff()">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Username" id="sky_username"
+                                        formControlName="sky_username" required
+                                        [ngClass]="{'is-valid': loginForm.controls.sky_username.valid && (loginForm.controls.sky_username.dirty || loginForm.controls.sky_username.touched)}">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Email address" id="email"
+                                        formControlName="sky_username" required
+                                        [ngClass]="{'is-valid': loginForm.controls.sky_username.valid && (loginForm.controls.sky_username.dirty || loginForm.controls.sky_username.touched)}">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" placeholder="Password" id="password"
+                                        formControlName="sky_password" required
+                                        [ngClass]="{'is-valid': loginForm.controls.sky_password.valid && (loginForm.controls.sky_password.dirty || loginForm.controls.sky_password.touched)}">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" class="form-control" placeholder="Repeat Password"id="password" formControlName="sky_password" required
+                                        [ngClass]="{'is-valid': loginForm.controls.sky_password.valid && (loginForm.controls.sky_password.dirty || loginForm.controls.sky_password.touched)}">
+                                </div>
+
+                                <button type="submit" class="button register" [disabled]="!loginForm.valid"><i
+                                        class="fas fa-sign-in-alt"></i> Register</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
