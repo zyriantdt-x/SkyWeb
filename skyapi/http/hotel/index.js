@@ -4,6 +4,7 @@ import fs from "fs"
 
 import HttpUsers from "./users";
 import HttpStats from "./stats";
+import HttpLocale from "./locale";
 
 export default class HttpHotel {
     constructor() {
@@ -11,6 +12,7 @@ export default class HttpHotel {
 
         router.use("/users", new HttpUsers);
         router.use("/stats", new HttpStats);
+        router.use("/locale", new HttpLocale);
 
         router.get("/badge/:badgedata", this.get_badge_data)
 

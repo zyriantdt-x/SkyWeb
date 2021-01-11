@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { LocaleService } from 'src/app/services/locale/locale.service';
 import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
   registrationForm: FormGroup
   registrationFailedReason: string | undefined
 
-  constructor(private formBuilder: FormBuilder, private tokenStorage: TokenStorageService, private router: Router, private authService: AuthService) { 
+  constructor(private formBuilder: FormBuilder, private tokenStorage: TokenStorageService, private router: Router, private authService: AuthService, private localeService: LocaleService) { 
     this.registrationForm = this.formBuilder.group({
       reg_username: ['', Validators.required],
       reg_email: ['', [ Validators.required, Validators.email ]],
@@ -59,8 +60,10 @@ export class RegisterComponent implements OnInit {
 
       window.location.reload();
     }, err => {
-      console.log(err);
-      this.registrationFailedReason = err.error.error.message;
+      console.log("Error code: " + err.error.error.message);
+      this.localeService.get_locale(err.error.error.message).subscribe(result => {
+        this.registrationFailedReason = result.value;
+      })
     })
   }
 
