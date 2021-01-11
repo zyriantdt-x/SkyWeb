@@ -8,35 +8,47 @@
                         <p class="lead">Build, make friends, get noticed.</p>
                         <div class="alert alert-danger" *ngIf="loginFailed">
                             <strong>Oh no!</strong> The login attempt failed.
-                          </div>
+                        </div>
                         <div style="height: 200px">
                             <form [formGroup]="loginForm" (submit)="doStuff()">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Username" id="sky_username" formControlName="sky_username" required [ngClass]="{'is-valid': loginForm.controls.sky_username.valid && (loginForm.controls.sky_username.dirty || loginForm.controls.sky_username.touched)}">
+                                    <input type="text" class="form-control" placeholder="Username" id="sky_username"
+                                        formControlName="sky_username" required
+                                        [ngClass]="{'is-valid': loginForm.controls.sky_username.valid && (loginForm.controls.sky_username.dirty || loginForm.controls.sky_username.touched)}">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Password" id="password" formControlName="sky_password" required [ngClass]="{'is-valid': loginForm.controls.sky_password.valid && (loginForm.controls.sky_password.dirty || loginForm.controls.sky_password.touched)}">
+                                    <input type="password" class="form-control" placeholder="Password" id="password"
+                                        formControlName="sky_password" required
+                                        [ngClass]="{'is-valid': loginForm.controls.sky_password.valid && (loginForm.controls.sky_password.dirty || loginForm.controls.sky_password.touched)}">
                                 </div>
-            
-                                <button type="submit" class="button blue" [disabled]="!loginForm.valid"><i class="fas fa-sign-in-alt"></i> Login</button> 
+
+                                <button type="submit" class="button blue" [disabled]="!loginForm.valid"><i
+                                        class="fas fa-sign-in-alt"></i> Login</button>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-      
-    <div class="col">
-        <div class="container">
-            <div class="card border-0 shadow my-5">
-                <div class="card-body p-5">
-                    <h1 class="font-weight-light">Join us today</h1>
-                    <p class="lead">Join an exciting community full of awesome people. Click the register button to join Sky Hotel today!</p>
-                    <img src="https://images.habbo.com/c_images/HabboWay/habboway_2a.png"><br>
-                    <button class="button red"><i class="fas fa-user-plus"></i> Create an Account</button> 
-                    <button class="button discord"><i class="fab fa-discord"></i> Join our Discord</button>
+
+        <div class="col">
+            <div class="container">
+                <div class="card border-0 shadow my-5">
+                    <div class="card-body p-5">
+                        <h1 class="font-weight-light">Join us today</h1>
+                        <p class="lead">Join an exciting community full of awesome people. Click the register button to
+                            join Sky Hotel today!</p>
+                        <img src="https://images.habbo.com/c_images/HabboWay/habboway_2a.png"><br>
+                        <button class="button red"><i class="fas fa-user-plus"></i> Create an Account</button>
+                        <button class="button discord"><i class="fab fa-discord"></i> Join our Discord</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="card border-0 shadow my-5">
+                    <div class="card-body p-5"><b>SkyWeb</b> - powered by Bootstrap and Angular. Developed with <i style= "color:#ce3535;" class="fas fa-heart"></i> by <b>Lee</b> and <b>Ellis</b>.
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
