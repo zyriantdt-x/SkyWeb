@@ -10,28 +10,28 @@
                             <strong>Oh no!</strong> Registration failed.
                         </div>
                         <div style="height: 200px">
-                            <form [formGroup]="registerForm" (submit)="doStuff()">
+                            <form [formGroup]="registrationForm" (submit)="doStuff()">
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" placeholder="Username" id="sky_username"
-                                        formControlName="sky_username" required
-                                        [ngClass]="{'is-valid': loginForm.controls.sky_username.valid && (loginForm.controls.sky_username.dirty || loginForm.controls.sky_username.touched)}">
+                                    <input type="text" class="form-control" placeholder="Username" id="reg_username"
+                                        formControlName="reg_username" required
+                                        [ngClass]="{'is-valid': registrationForm.controls.reg_username.valid && (registrationForm.controls.reg_username.dirty || registrationForm.controls.reg_username.touched)}">
                                 </div>
                                 <div class="mb-3">
                                     <input type="email" class="form-control" placeholder="Email address" id="email"
-                                        formControlName="sky_username" required
-                                        [ngClass]="{'is-valid': loginForm.controls.sky_username.valid && (loginForm.controls.sky_username.dirty || loginForm.controls.sky_username.touched)}">
+                                        formControlName="reg_email" required
+                                        [ngClass]="{'is-valid': registrationForm.controls.reg_email.valid && (registrationForm.controls.reg_email.dirty || registrationForm.controls.reg_email.touched)}">
                                 </div>
                                 <div class="mb-3">
                                     <input type="password" class="form-control" placeholder="Password" id="password"
-                                        formControlName="sky_password" required
-                                        [ngClass]="{'is-valid': loginForm.controls.sky_password.valid && (loginForm.controls.sky_password.dirty || loginForm.controls.sky_password.touched)}">
+                                        formControlName="reg_password" required
+                                        [ngClass]="{'is-valid': registrationForm.controls.passwordGroup.reg_password.valid && (registrationForm.controls.passwordGroup.reg_password.dirty || registrationForm.controls.passwordGroup.reg_password.touched)}">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" class="form-control" placeholder="Repeat Password"id="password" formControlName="sky_password" required
-                                        [ngClass]="{'is-valid': loginForm.controls.sky_password.valid && (loginForm.controls.sky_password.dirty || loginForm.controls.sky_password.touched)}">
+                                    <input type="password" class="form-control" placeholder="Repeat Password" id="password" formControlName="reg_passwordtwo" required
+                                        [ngClass]="{'is-valid': registrationForm.controls.passwordGroup.reg_passwordtwo.valid && (registrationForm.controls.passwordGroup.sky_passreg_passwordtwoword.dirty || registrationForm.controls.passwordGroup.reg_passwordtwo.touched)}">
                                 </div>
 
-                                <button type="submit" class="button register" [disabled]="!loginForm.valid"><i
+                                <button type="submit" class="button register" [disabled]="!registrationForm.valid"><i
                                         class="fas fa-sign-in-alt"></i> Register</button>
                             </form>
                         </div>
