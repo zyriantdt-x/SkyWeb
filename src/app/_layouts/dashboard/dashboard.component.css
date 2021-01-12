@@ -142,8 +142,8 @@
         text-align: center;
     }
     
-    .alert-green {
-    background-color: #40c372;
+    .alert-red {
+    background-color: #d81d1d;
     color: white;
     font-weight: bold;
     margin-bottom: -5px;
