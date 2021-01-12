@@ -31,7 +31,7 @@ const routes: Routes = [
   { path: "staff", component: StaffComponent, canActivate: [AuthGuard] },
 
   { path: "skyclient/:token", component: SkyClientComponent }, // skyclient route
-  { path: "token", component: SkyClientTokenComponent, canActivate: [AuthGuard] }, // skyclient route
+  { path: "skyclient", component: SkyClientTokenComponent, canActivate: [AuthGuard] }, // skyclient route
 
   { path: "leaderboards", component: LeaderboardsComponent, canActivate: [AuthGuard] },
   { path: "online", component: OnlineComponent, canActivate: [AuthGuard] },

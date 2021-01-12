@@ -5,7 +5,7 @@ import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.
 @Component({
   selector: 'app-sky-client-token',
   templateUrl: './sky-client-token.component.html',
-  styleUrls: ['./sky-client-token.component.css']
+  styleUrls: ['./sky-client-token.component.css','../../_layouts/dashboard/dashboard.component.css']
 })
 export class SkyClientTokenComponent implements OnInit {
 
