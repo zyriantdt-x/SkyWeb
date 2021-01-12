@@ -69,7 +69,14 @@
 	.button2.bug {
 		background-color: #bd4747;
 		border-color: #e69191;
-	}
+    }
+    
+    .button.skyclient {
+        background-color: #2857a5;
+        border-color: #3f83f3;
+    }
+    
+    
     
     #profile {
         background-color: #4770b5;
@@ -149,6 +156,15 @@
     margin-bottom: -5px;
     margin-top: 15px;
     }
+
+    .alert-sky {
+        background-color: #1d97d8;
+        color: white;
+        font-weight: bold;
+        margin-bottom: -5px;
+        margin-top: 15px;
+        }
+
 	
 	.onlineusers {
 		border-radius: 5px;
