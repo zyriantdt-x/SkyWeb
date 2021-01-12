@@ -7,6 +7,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { MeComponent } from './components/me/me.component';
 import { OnlineComponent } from './components/online/online.component';
 import { RegisterComponent } from './components/register/register.component';
+import { SkyClientTokenComponent } from './components/sky-client-token/sky-client-token.component';
+import { SkyClientComponent } from './components/sky-client/sky-client.component';
 import { StaffComponent } from './components/staff/staff.component';
 import { StoreComponent } from './components/store/store.component';
 import { AuthGuard } from './_helpers/auth.guard';
@@ -27,6 +29,9 @@ const routes: Routes = [
   { path: "me", component: MeComponent, canActivate: [AuthGuard] },
   { path: "client", component: ClientComponent, canActivate: [AuthGuard] },
   { path: "staff", component: StaffComponent, canActivate: [AuthGuard] },
+
+  { path: "skyclient/:token", component: SkyClientComponent }, // skyclient route
+  { path: "skyclient", component: SkyClientTokenComponent, canActivate: [AuthGuard] }, // skyclient route
 
   { path: "leaderboards", component: LeaderboardsComponent, canActivate: [AuthGuard] },
   { path: "online", component: OnlineComponent, canActivate: [AuthGuard] },

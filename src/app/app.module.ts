@@ -19,6 +19,8 @@ import { RegisterComponent } from './components/register/register.component';
 import { StoreComponent } from './components/store/store.component';
 import { LeaderboardsComponent } from './components/leaderboards/leaderboards.component';
 import { OnlineComponent } from './components/online/online.component';
+import { SkyClientComponent } from './components/sky-client/sky-client.component';
+import { SkyClientTokenComponent } from './components/sky-client-token/sky-client-token.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { OnlineComponent } from './components/online/online.component';
     StoreComponent,
     LeaderboardsComponent,
     OnlineComponent,
+    SkyClientComponent,
+    SkyClientTokenComponent,
   ],
   imports: [
     BrowserModule,
