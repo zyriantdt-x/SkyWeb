@@ -1,37 +1,42 @@
 <app-dashboard></app-dashboard>
 <div class="container">
-    <br>
-    <div class="row">
-       <div class="col-8">
-          <div class="container">
-             <div id="profile">
-                <div class="col">
-                   <div class="avatar"><img src="https://www.habbo.com/habbo-imaging/avatarimage?figure={{ CurrentUser?.look }}&amp;direction=3&amp;head_direction=3&amp;gesture=sml&amp;action=wav"> </div>
-                </div>
-                <div class="info"><b><i class="fas fa-user"></i> Username:</b> {{ CurrentUser?.username }}</div>
-                <div class="info"><b><i class="fas fa-comments"></i> Motto:</b> {{ CurrentUser?.motto }}</div>
-                <button class="button green" [routerLink]="['/client']"><i class="fas fa-sign-in-alt"></i> Enter</button> 
-             </div>
-             <div class="card border-0 shadow my-5">
-				<div class="title">News</div>
-                <div class="card-body p-5">
-                   News here, probably?
-                </div>
-             </div>
-          </div>
-       </div>
-       <div class="col-sm">
-          <div class="container">
-             <button class="button2 discord"><i class="fab fa-discord"></i> JOIN OUR DISCORD</button>
-             <button class="button2 twitter"><i class="fab fa-twitter"></i> FOLLOW OUR TWITTER</button>
-			 <button class="button2 bug"><i class="fas fa-code"></i> REPORT A BUG</button>
-             <div class="card border-1 shadow my-5">
-                <div class="title">Happy new year!</div>
-                <div class="card-body p-3">
-                   Hello and a happy new year to all of our users, we hope you have a great 2021.
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
- </div>
+   <br>
+   <div class="row">
+      <div class="col-8">
+         <div class="container">
+            <div id="profile">
+               <div class="col">
+                  <div class="avatar"><img
+                        src="https://www.habbo.com/habbo-imaging/avatarimage?figure={{ CurrentUser?.look }}&amp;direction=3&amp;head_direction=3&amp;gesture=sml&amp;action=wav">
+                  </div>
+               </div>
+               <div class="info"><b><i class="fas fa-user"></i> Username:</b> {{ CurrentUser?.username }}</div>
+               <div class="info"><b><i class="fas fa-comments"></i> Motto:</b> {{ CurrentUser?.motto }}</div>
+               <button style="margin-right:10px;" class="button green" [routerLink]="['/client']"><i
+                     class="fas fa-sign-in-alt"></i> Legacy Client</button>
+               <button style="margin-right:10px;" class="button skyclient" [routerLink]="['/skyclient']"><i
+                     class="fas fa-sign-in-alt"></i> Sky Client</button>
+            </div>
+            <div class="card border-0 shadow my-5">
+               <div class="title">News</div>
+               <div class="card-body p-5">
+                  News here, probably?
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="col-sm">
+         <div class="container">
+            <button class="button2 discord"><i class="fab fa-discord"></i> JOIN OUR DISCORD</button>
+            <button class="button2 twitter"><i class="fab fa-twitter"></i> FOLLOW OUR TWITTER</button>
+            <button class="button2 bug"><i class="fas fa-code"></i> REPORT A BUG</button>
+            <div class="card border-1 shadow my-5">
+               <div class="title">Happy new year!</div>
+               <div class="card-body p-3">
+                  Hello and a happy new year to all of our users, we hope you have a great 2021.
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

@@ -9,9 +9,11 @@
                </h5>
             </div>
             <br>
-            <button class="button green" [routerLink]="['/client']"><i class="fas fa-sign-in-alt"></i> Enter the
-               Hotel</button>&nbsp;&nbsp;&nbsp;<button class="button red" (click)="signOut()"><i
-                  class="fas fa-sign-out-alt"></i> Sign Out</button>
+            <button style="margin-right:10px;" class="button green" [routerLink]="['/client']"><i
+                  class="fas fa-sign-in-alt"></i> Legacy Client</button><button style="margin-right:10px;"
+               class="button skyclient" [routerLink]="['/skyclient']"><i class="fas fa-sign-in-alt"></i> Launch Sky
+               Client</button><button class="button red" (click)="signOut()"><i class="fas fa-sign-out-alt"></i> Sign
+               Out</button>
          </div>
       </div>
    </div>
@@ -44,8 +46,9 @@
 </nav>
 
 <div class="container">
-<div class="alert alert-red"><i class="fas fa-exclamation-circle"></i> Support for Adobe Flash Player on Google Chrome
-   has officially ended. In order to play Sky Hotel, you will need a browser that still supports flash player; we
-   recommended <a style="color:white;" href="https://www.maxthon.com/">Maxthon</a>. We are exploring alternate ways of playing Sky and will
-   keep you posted. </div>
+   <div class="alert alert-sky"><i class="fas fa-exclamation-circle"></i> Support for Adobe Flash Player on most modern
+      browsers
+      has officially ended. In order to play Sky Hotel, you will need a browser that still supports flash player; we
+      have developed an electron-based application with built-in flash support: <a style="color:white;"
+         href="/skyclient">Sky Client</a></div>
 </div>
