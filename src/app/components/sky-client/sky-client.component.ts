@@ -1,29 +1,33 @@
-import { AfterViewInit, Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Renderer2, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-client',
-  templateUrl: './client.component.html',
-  styleUrls: ['./client.component.css']
+  selector: 'app-sky-client',
+  templateUrl: './sky-client.component.html',
+  styleUrls: ['./sky-client.component.css']
 })
-export class ClientComponent implements OnInit, AfterViewInit {
+export class SkyClientComponent implements OnInit, AfterViewInit {
 
-	@ViewChild("client")
+  @ViewChild("client")
 	private elRef!: ElementRef;
 
-	constructor(private renderer: Renderer2, private tokenStorage: TokenStorageService, private router: Router) {
+  constructor(
+    private renderer: Renderer2,
+    private activatedRoute: ActivatedRoute,
+    private tokenStorage: TokenStorageService
+    ) { }
 
-	}
+  ngOnInit(): void {
+  }
 
-	ngOnInit(): void {
-	}
+  ngAfterViewInit(): void {
+    this.activatedRoute.paramMap.subscribe(params => {
 
-	ngAfterViewInit(): void {
-		this.tokenStorage.getSSO()
-		.subscribe((auth_token: any) => {
-			let swfURL = environment.HABBO_SWF;
+      let auth_token = params.get('token');
+
+      let swfURL = environment.HABBO_SWF;
 			let swfBase = environment.PRODUCTION_BASE;
 			
 			let flashVars = {
@@ -78,8 +82,8 @@ export class ClientComponent implements OnInit, AfterViewInit {
 			{
 				console.log('action = [' + action + '], label = [' + label + '], value = [' + value + ']');
 			};
-		});
 
-	}
+    })
+  }
 
 }
