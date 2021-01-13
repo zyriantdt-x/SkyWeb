@@ -10,6 +10,22 @@
     margin-bottom: 10px;
     background-color: #2857a5;
     border-color: #3f83f3;
+    margin-right: 10px;
+}
+
+.button.virus {
+    font-weight: bold;
+    color: #ffffff !important;
+    padding: 10px;
+    box-shadow: 0 3px 0 1px rgba(0,0,0,.2);
+    border: 0.15rem solid;
+    border-radius: 0.4rem;
+    cursor: pointer; 
+    margin-top: 5px;
+    margin-bottom: 10px;
+    background-color: #28a529;
+    border-color: #34ce35;
+    margin-right: 10px;
 }
 
 
