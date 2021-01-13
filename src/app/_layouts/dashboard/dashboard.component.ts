@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { StatsService } from 'src/app/services/stats/stats.service';
 import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.service';
+import { VotingService } from 'src/app/services/voting/voting.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,7 @@ import { TokenStorageService } from 'src/app/services/tokenstorage/tokenstorage.
 export class DashboardComponent implements OnInit {
   TotalOnline: number;
   CurrentUser: any;
-  constructor(private tokenStorage: TokenStorageService, private _router: Router, private statsService: StatsService) {
+  constructor(private tokenStorage: TokenStorageService, private _router: Router, private statsService: StatsService, private votingService: VotingService) {
     this.TotalOnline = 0;
     tokenStorage.getUserObservable()
     .subscribe(result => {
@@ -23,6 +24,13 @@ export class DashboardComponent implements OnInit {
     .subscribe(data => {
       this.TotalOnline = data.online
     })
+
+    this.votingService.has_voted().toPromise()
+    .then(result => {
+      if(result.hasVoted == "true") return;
+      this._router.navigateByUrl("https://findretros.com/servers/skyhotelofficial/vote");
+    })
+    .catch(err => {});
   }
 
   ngOnInit(): void {
