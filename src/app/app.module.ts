@@ -21,6 +21,7 @@ import { LeaderboardsComponent } from './components/leaderboards/leaderboards.co
 import { OnlineComponent } from './components/online/online.component';
 import { SkyClientComponent } from './components/sky-client/sky-client.component';
 import { SkyClientTokenComponent } from './components/sky-client-token/sky-client-token.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SkyClientTokenComponent } from './components/sky-client-token/sky-clien
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
     authInterceptorProviders

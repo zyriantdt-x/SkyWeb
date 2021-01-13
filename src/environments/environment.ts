@@ -3,13 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
+  production: true,
 
   API_URL: "/api",
 
-
-  CLIENT_HOST: "161.97.92.57",
-  CLIENT_PORT: "30000",
+  CLIENT_HOST: "sky.ellis.pw",
+  CLIENT_PORT: "3899",
 
   URL: "http://sky-hotel.co.uk",
 
