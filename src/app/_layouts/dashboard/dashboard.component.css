@@ -134,7 +134,6 @@
         color: #ffffff;
         background-color: #318dc7;
         padding: 8px 14px;
-        letter-spacing: 0.2px;
         text-align: center;
     }
     
@@ -145,9 +144,29 @@
         color: #ffffff;
         background-color: #b52c2c;
         padding: 8px 14px;
-        letter-spacing: 0.2px;
         text-align: center;
     }
+
+    .title-discord {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 115%;
+        color: #ffffff;
+        background-color: #7289da;
+        padding: 8px 14px;
+        text-align: center;
+    }
+
+    .title-cons {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 115%;
+        color: #ffffff;
+        background-color: #e28d2a;
+        padding: 8px 14px;
+        text-align: center;
+    }
+
     
     .alert-red {
     background-color: #d81d1d;
@@ -156,6 +175,14 @@
     margin-bottom: -5px;
     margin-top: 15px;
     }
+
+    .alert-green {
+        background-color: #28a764;
+        color: white;
+        font-weight: bold;
+        margin-bottom: -5px;
+        margin-top: 15px;
+        }
 
     .alert-sky {
         background-color: #1d97d8;
@@ -173,4 +200,5 @@
 		width: 40%;
 		box-shadow: inset 0 0 0 1000px rgba(0,0,0,.1);
 		margin-bottom: 10px;
-	}
+    }
+    
