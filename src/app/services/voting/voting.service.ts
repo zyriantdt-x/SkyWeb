@@ -11,6 +11,6 @@ export class VotingService {
   constructor(private http: HttpClient) { }
 
   has_voted(): Observable<any> {
-    return this.http.get<any>(environment.API_URL + "/api/hotel/stats/has_voted");
+    return this.http.get<any>(environment.API_URL + "/hotel/stats/has_voted");
   }
 }
