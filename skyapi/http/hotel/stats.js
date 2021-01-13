@@ -35,9 +35,7 @@ export default class HttpStats {
     }
 
     has_voted(req, res, next) {
-        if(req.connection.remoteAddress == "::1") return res.status(200).json({ hasVoted: "true" });
-        if(!req.headers['CF-Connecting-IP']) req.headers['CF-Connecting-IP'] = req.connection.remoteAddress;
-        axios.get("https://findretros.com/legacy/validate?user=skyhotelofficial&ip=" + req.headers['CF-Connecting-IP'])
+        axios.get("https://findretros.com/legacy/validate?user=skyhotelofficial&ip=" + req.headers['cf-connecting-ip'])
         .then(response => {
             if(response.data == "2") return res.status(200).json({ hasVoted: "true" });
             if(response.data == "3") return res.status(200).json({ hasVoted: "false" });
