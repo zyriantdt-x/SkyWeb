@@ -156,6 +156,17 @@
         padding: 8px 14px;
         text-align: center;
     }
+
+    .title-cons {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 115%;
+        color: #ffffff;
+        background-color: #e28d2a;
+        padding: 8px 14px;
+        text-align: center;
+    }
+
     
     .alert-red {
     background-color: #d81d1d;
