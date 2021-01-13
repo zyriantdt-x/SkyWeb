@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
 
     this.votingService.has_voted().toPromise()
     .then(result => {
-      console.log(result);
       if(result.hasVoted == "true") return;
       window.location.href = "https://findretros.com/servers/skyhotelofficial/vote"
     })
