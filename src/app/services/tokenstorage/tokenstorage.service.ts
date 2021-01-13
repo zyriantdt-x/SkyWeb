@@ -50,7 +50,10 @@ export class TokenStorageService {
         localStorage.setItem("user", JSON.stringify(result));
         that.next(result);
       })
-      .catch(err => {})
+      .catch(err => {
+        localStorage.clear();
+        that.next(null);
+      })
     })
   }
 
